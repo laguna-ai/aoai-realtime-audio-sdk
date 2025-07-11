@@ -41,10 +41,11 @@ interface ToolDeclaration {
 }
 
 const ChatInterface = () => {
-  const [isAzure, setIsAzure] = useState(false);
-  const [apiKey, setApiKey] = useState("");
-  const [endpoint, setEndpoint] = useState("");
-  const [deployment, setDeployment] = useState("");
+  // Azure OpenAI is always enabled
+  const isAzure = true;
+  const apiKey = process.env.NEXT_PUBLIC_AZURE_OPENAI_API_KEY || "";
+  const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT || "";
+  const deployment = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT || "";
   const [useVAD, setUseVAD] = useState(true);
   const [instructions, setInstructions] = useState("");
   const [temperature, setTemperature] = useState(0.9);
@@ -78,12 +79,7 @@ const ChatInterface = () => {
     if (!isConnected) {
       try {
         setIsConnecting(true);
-        clientRef.current = isAzure
-          ? new RTClient(new URL(endpoint), { key: apiKey }, { deployment })
-          : new RTClient(
-              { key: apiKey },
-              { model: "gpt-4o-realtime-preview-2024-10-01" },
-            );
+        clientRef.current = new RTClient(new URL(endpoint), { key: apiKey }, { deployment });
         const modalities: Modality[] =
           modality === "audio" ? ["text", "audio"] : ["text"];
         const turnDetection: TurnDetection = useVAD
@@ -267,48 +263,6 @@ const ChatInterface = () => {
       <div className="w-80 bg-gray-50 p-4 flex flex-col border-r">
         <div className="flex-1 overflow-y-auto">
           <Accordion type="single" collapsible className="space-y-4">
-            {/* Connection Settings */}
-            <AccordionItem value="connection">
-              <AccordionTrigger className="text-lg font-semibold">
-                Connection Settings
-              </AccordionTrigger>
-              <AccordionContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span>Use Azure OpenAI</span>
-                  <Switch
-                    checked={isAzure}
-                    onCheckedChange={setIsAzure}
-                    disabled={isConnected}
-                  />
-                </div>
-
-                {isAzure && (
-                  <>
-                    <Input
-                      placeholder="Azure Endpoint"
-                      value={endpoint}
-                      onChange={(e) => setEndpoint(e.target.value)}
-                      disabled={isConnected}
-                    />
-                    <Input
-                      placeholder="Deployment Name"
-                      value={deployment}
-                      onChange={(e) => setDeployment(e.target.value)}
-                      disabled={isConnected}
-                    />
-                  </>
-                )}
-
-                <Input
-                  type="password"
-                  placeholder="API Key"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  disabled={isConnected}
-                />
-              </AccordionContent>
-            </AccordionItem>
-
             {/* Conversation Settings */}
             <AccordionItem value="conversation">
               <AccordionTrigger className="text-lg font-semibold">
