@@ -46,7 +46,7 @@ const ChatInterface = () => {
   const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT || "";
   const deployment = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT || "";
   console.log("deployment:", deployment);
-  // Lo anterior se deja para que el usuario pueda cambiarlo si es necesario
+  
   const [useVAD, setUseVAD] = useState(true);
   const [instructions, setInstructions] = useState("");
   const [temperature, setTemperature] = useState(0.9);
