@@ -43,9 +43,9 @@ interface ToolDeclaration {
 
 const ChatInterface = () => {
   // Azure OpenAI is always enabled
-  const apiKey = process.env.NEXT_PUBLIC_AZURE_OPENAI_API_KEY || "";
-  const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT || "";
-  const deployment = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT || "";
+  const apiKey = process.env.REACT_APP_AZURE_OPENAI_API_KEY || "";
+  const endpoint = process.env.REACT_APP_AZURE_OPENAI_ENDPOINT || "";
+  const deployment = process.env.REACT_APP_AZURE_OPENAI_DEPLOYMENT || "";
   console.log("deployment:", deployment);
 
   const [useVAD, setUseVAD] = useState(true);
