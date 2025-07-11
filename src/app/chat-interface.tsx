@@ -28,6 +28,7 @@ import {
   TurnDetection,
 } from "rt-client";
 import { AudioHandler } from "@/lib/audio";
+import process from "process";
 
 interface Message {
   type: "user" | "assistant" | "status";
@@ -46,7 +47,7 @@ const ChatInterface = () => {
   const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT || "";
   const deployment = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT || "";
   console.log("deployment:", deployment);
-  
+
   const [useVAD, setUseVAD] = useState(true);
   const [instructions, setInstructions] = useState("");
   const [temperature, setTemperature] = useState(0.9);
