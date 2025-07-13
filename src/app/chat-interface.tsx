@@ -45,7 +45,7 @@ const ChatInterface = () => {
   // Azure OpenAI is always enabled
   const apiKey = process.env.NEXT_PUBLIC_AZURE_OPENAI_API_KEY || "";
   const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT || "";
-  const deployment = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT || "";
+  const deployment = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT || "gpt-4o-realtime-preview";
   console.log("deployment:", deployment);
 
   const [useVAD, setUseVAD] = useState(true);
