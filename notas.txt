@@ -1,0 +1,8 @@
+Ver documentación en 
+https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nextjs-hybrid
+respecto a despliegue de nextjs híbrido en Azure Static Web Apps.
+
+
+También:
+https://learn.microsoft.com/en-us/answers/questions/2114934/azure-static-web-apps-environment-variable-not-wor
+para react puro
