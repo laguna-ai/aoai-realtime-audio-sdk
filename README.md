@@ -1,3 +1,12 @@
+# Plantilla de uso de la API de Open AI realtime en frontend
+
+## ⚙️ Infraestructura
+
+Este proyecto se basa en **Azure Static Web Apps** para manejar la lógica del frontend y backend de API.
+Está desarrollado en Next.js y por tanto debe desplegar se en Azure con la opción para tal fin, usando 
+una configuración apropiadad de variables de entorno como se explica en la documentación:
+https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nextjs-hybrid 
+
 # RTClient Chat Sample
 
 A Next.js-based chat application demonstrating the usage of RTClient for real-time conversations with OpenAI and Azure OpenAI models. This sample showcases text and audio interactions, streaming responses, and various configuration options.
